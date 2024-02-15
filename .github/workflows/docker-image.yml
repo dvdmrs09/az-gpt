@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'The branch to build'
+        required: true
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+   
+    - name: Build the Docker image
+      run:         
+        docker build . --file WebApp.Dockerfile --tag dvdmrs09/az:az-gpt;
+        docker tag dvdmrs09/az:az-gpt dvdmrs09/az:latest;
+        docker push dvdmrs09/az:az-gpt;
+        docker push dvdmrs09/az:latest;
+      
