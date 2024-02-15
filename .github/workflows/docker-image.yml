@@ -17,7 +17,7 @@ jobs:
    
     - name: Build the Docker image
       run:         
-        docker build . --file WebApp.Dockerfile --tag dvdmrs09/az:az-gpt;
+        docker build . --file ../WebApp.Dockerfile --tag dvdmrs09/az:az-gpt;
         docker tag dvdmrs09/az:az-gpt dvdmrs09/az:latest;
         docker push dvdmrs09/az:az-gpt;
         docker push dvdmrs09/az:latest;
