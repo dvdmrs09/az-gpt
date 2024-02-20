@@ -19,7 +19,7 @@ jobs:
         # Container registry password
         password: ${{ secrets.ACR_PASSWORD }}
         # Container registry server url
-        login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+        registry: dvdmrs09.azurecr.io/dvdmrs09/az
         
      - uses: actions/checkout@v3
        with:
@@ -27,7 +27,7 @@ jobs:
      - name: Build the Docker image
        run:         
         docker build . --file WebApp.Dockerfile --tag dvdmrs09.azurecr.io/dvdmrs09/az:latest;
-        docker push dvdmrs09.azurecr.io/az:latest;
+        docker push dvdmrs09.azurecr.io/dvdmrs09/az:latest;
     
       
          
