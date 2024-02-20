@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Azure Container Registry Login
-      uses: Azure/docker-login@v1
+      uses: Azure/docker-login@v1.0.1
       with:
         # Container registry username
         
