@@ -1,6 +1,5 @@
 FROM node:20-alpine AS frontend  
-RUN apk update && apk add --no-cache --virtual \
-    expat
+
     
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -14,7 +13,8 @@ WORKDIR /home/node/app/frontend
 RUN npm run build
   
 FROM python:3.11-alpine 
-RUN apk add --no-cache --virtual .build-deps \  
+RUN apk update && apk upgrade \ 
+    && apk add --no-cache --virtual .build-deps \  
     build-base \  
     libffi-dev \  
     openssl-dev \  
