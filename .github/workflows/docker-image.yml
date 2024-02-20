@@ -15,9 +15,9 @@ jobs:
        with:
         # Container registry username
         
-        username: ${{ secrets.ACR_USERNAME }}
+        username: ${{ ACR_USERNAME }}
         # Container registry password
-        password: ${{ secrets.ACR_PASSWORD }}
+        password: ${{ ACR_PASSWORD }}
         # Container registry server url
         registry: dvdmrs09.azurecr.io/dvdmrs09/az
         
