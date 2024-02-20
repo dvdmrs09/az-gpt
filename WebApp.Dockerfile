@@ -1,4 +1,7 @@
 FROM node:20-alpine AS frontend  
+RUN apk update && apk add --no-cache --virtual \
+    expat
+    
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app 
