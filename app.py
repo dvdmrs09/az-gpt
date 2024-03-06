@@ -180,7 +180,7 @@ frontend_settings = {
         "show_share_button": UI_SHOW_SHARE_BUTTON
     }
 }
-speech_config = speechsdk.SpeechConfig(subscription=os.getenv("SPEECH_API_KEY"), region="northcentralus")
+
 message_uuid = ""
 
 def should_use_data():
@@ -484,11 +484,6 @@ def get_configured_data_source():
     return data_source
 
 def prepare_model_args(request_body):
-    speech_config = speechsdk.SpeechConfig(subscription=os.getenv("SPEECH_API_KEY"), region="northcentralus")
-    audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
-    speech_config.speech_recognition_language="en-US"
-    speech_recognizer = speechsdk.SpeechRecognizer(speech_config, audio_config)
-    speech_result = speech_recognizer.recognize_once_async().get()
     request_messages = request_body.get("messages", [])
     messages = []
     if not SHOULD_USE_DATA:
@@ -563,9 +558,6 @@ async def complete_chat_request(request_body):
 async def stream_chat_request(request_body):
     response = await send_chat_request(request_body)
     history_metadata = request_body.get("history_metadata", {})
-    speech_config.speech_synthesis_voice_name = "en-US-BrianNeural"
-    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config)
-    speech_synthesizer.speak_text(response['choices'][0]['message']['content'])
     async def generate():
         async for completionChunk in response:
             yield format_stream_response(completionChunk, history_metadata, message_uuid)
