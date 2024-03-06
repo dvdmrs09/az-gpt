@@ -4,7 +4,6 @@ import os
 import logging
 import uuid
 from dotenv import load_dotenv
-from speech import text_to_speech
 from quart import (
     Blueprint,
     Quart,
@@ -181,10 +180,7 @@ frontend_settings = {
         "show_share_button": UI_SHOW_SHARE_BUTTON
     }
 }
-speech_config = speechsdk.SpeechConfig(
-  subscription=os.getenv("SPEECH_API_KEY"), 
-  region="northcentralus"
-)
+speech_config = speechsdk.SpeechConfig(subscription=os.getenv("SPEECH_API_KEY"), region="northcentralus")
 message_uuid = ""
 
 def should_use_data():
