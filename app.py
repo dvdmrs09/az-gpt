@@ -13,7 +13,6 @@ from quart import (
     send_from_directory,
     render_template
 )
-import azure.cognitiveservices.speech as speechsdk
 from openai import AsyncAzureOpenAI
 from azure.identity.aio import DefaultAzureCredential, get_bearer_token_provider
 from backend.auth.auth_utils import get_authenticated_user_details
