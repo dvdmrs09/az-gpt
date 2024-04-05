@@ -20,8 +20,8 @@ if [ $? -ne 0 ]; then
 fi
 cd ..
 curl "https://stazureaioai807555248912.blob.core.windows.net/managedapp/.env?sp=r&st=2024-02-29T14:46:09Z&se=2024-06-05T21:46:09Z&spr=https&sv=2022-11-02&sr=b&sig=qQuV1l4My%2B0bI2WBmsvOtbH4OqI06MKw1VdztQtAP74%3D" > .env
-. ./scripts/loadenv.sh
-
+#. ./scripts/loadenv.sh
+export $(grep -v '^#' .env | xargs)
 echo ""
 echo "Starting backend"
 echo ""
